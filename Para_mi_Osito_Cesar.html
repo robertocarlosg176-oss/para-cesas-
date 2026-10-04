@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi Osito ❤️</title>
+<style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100%; }
+    body {
+        font-family: Georgia, "Times New Roman", serif;
+        background: radial-gradient(circle at top, #ffe8ef 0%, #ffd0dc 35%, #f4a7bb 100%);
+        color: #542635;
+        overflow-x: hidden;
+    }
+
+    .hearts { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+    .heart {
+        position: absolute;
+        bottom: -50px;
+        font-size: 22px;
+        opacity: .7;
+        animation: subir linear infinite;
+    }
+    .heart:nth-child(1){left:8%; animation-duration:8s; animation-delay:0s}
+    .heart:nth-child(2){left:18%; animation-duration:11s; animation-delay:2s}
+    .heart:nth-child(3){left:31%; animation-duration:9s; animation-delay:4s}
+    .heart:nth-child(4){left:47%; animation-duration:12s; animation-delay:1s}
+    .heart:nth-child(5){left:62%; animation-duration:10s; animation-delay:3s}
+    .heart:nth-child(6){left:76%; animation-duration:8s; animation-delay:5s}
+    .heart:nth-child(7){left:89%; animation-duration:13s; animation-delay:1s}
+
+    @keyframes subir {
+        0% { transform: translateY(0) scale(.8) rotate(0); opacity: 0; }
+        15% { opacity: .75; }
+        100% { transform: translateY(-115vh) scale(1.3) rotate(25deg); opacity: 0; }
+    }
+
+    .inicio {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 30px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .intro-card {
+        max-width: 720px;
+        width: 100%;
+        padding: 55px 30px;
+        border-radius: 30px;
+        background: rgba(255,255,255,.55);
+        backdrop-filter: blur(9px);
+        box-shadow: 0 18px 50px rgba(94,35,54,.18);
+        animation: aparecer 1.6s ease;
+    }
+
+    .osito { font-size: 72px; animation: latido 1.8s infinite; }
+    h1 { margin: 10px 0 8px; font-size: clamp(42px, 8vw, 76px); color: #8e2d4c; }
+    .subtitulo { font-size: clamp(18px, 3vw, 25px); font-style: italic; }
+
+    .boton {
+        margin-top: 28px;
+        border: none;
+        background: #8e2d4c;
+        color: white;
+        padding: 14px 28px;
+        border-radius: 999px;
+        font-size: 17px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(142,45,76,.25);
+        transition: .3s;
+    }
+    .boton:hover { transform: translateY(-3px) scale(1.03); background: #72223d; }
+
+    .carta {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 80px 25px 100px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hoja {
+        background: rgba(255,250,247,.94);
+        border-radius: 25px;
+        padding: clamp(30px, 7vw, 70px);
+        box-shadow: 0 20px 60px rgba(87,34,51,.20);
+        position: relative;
+        animation: aparecer 1.2s ease;
+    }
+
+    .hoja:before {
+        content: "♥";
+        position: absolute;
+        top: 20px;
+        right: 28px;
+        color: #d85a78;
+        font-size: 28px;
+    }
+
+    .fecha {
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 3px;
+        color: #a25a6e;
+        text-transform: uppercase;
+        margin-bottom: 35px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #8e2d4c;
+        font-size: clamp(28px, 5vw, 44px);
+        margin: 0 0 35px;
+    }
+
+    .texto {
+        font-size: clamp(18px, 2.5vw, 21px);
+        line-height: 1.9;
+        text-align: left;
+    }
+    .texto p { margin: 0 0 25px; }
+    .destacado {
+        text-align: center;
+        font-weight: bold;
+        color: #8e2d4c;
+        font-size: clamp(24px, 4vw, 34px);
+        line-height: 1.5;
+        margin: 38px 0;
+    }
+
+    .firma {
+        text-align: right;
+        margin-top: 45px;
+        font-style: italic;
+        font-size: 21px;
+        color: #7c4052;
+    }
+
+    .final {
+        text-align: center;
+        padding: 70px 20px 100px;
+        position: relative;
+        z-index: 1;
+    }
+    .final .corazon {
+        font-size: 65px;
+        animation: latido 1.5s infinite;
+    }
+    .final p {
+        max-width: 650px;
+        margin: 18px auto;
+        font-size: 22px;
+        line-height: 1.7;
+    }
+    .frase-final {
+        color: #8e2d4c;
+        font-weight: bold;
+        font-size: clamp(24px, 4vw, 36px) !important;
+    }
+
+    @keyframes aparecer {
+        from { opacity: 0; transform: translateY(25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes latido {
+        0%,100% { transform: scale(1); }
+        50% { transform: scale(1.12); }
+    }
+
+    .oculto { display: none; }
+
+    @media (max-width: 600px) {
+        .intro-card { padding: 45px 20px; }
+        .hoja { padding: 30px 23px; }
+        .texto { line-height: 1.75; }
+    }
+</style>
+</head>
+<body>
+
+<div class="hearts" aria-hidden="true">
+    <div class="heart">♥</div><div class="heart">♡</div>
+    <div class="heart">♥</div><div class="heart">♡</div>
+    <div class="heart">♥</div><div class="heart">♡</div>
+    <div class="heart">♥</div>
+</div>
+
+<section class="inicio" id="inicio">
+    <div class="intro-card">
+        <div class="osito">🐻❤️</div>
+        <h1>Para mi Osito</h1>
+        <div class="subtitulo">Mi Pechocho, César...</div>
+        <button class="boton" onclick="mostrarCarta()">Tengo algo que decirte ✨</button>
+    </div>
+</section>
+
+<section class="carta oculto" id="carta">
+    <div class="hoja">
+        <div class="fecha">Un pequeño detalle para ti</div>
+        <h2>Para mi Osito, mi Pechocho ❤️</h2>
+
+        <div class="texto">
+            <p>
+                No hice esto para preguntarte nada, ni para presionarte con palabras grandes.
+                Lo hice simplemente porque hay cosas que quiero que sepas y, sobre todo,
+                que recuerdes.
+            </p>
+
+            <p class="destacado">
+                Yo quiero hacer las cosas bien contigo. ❤️
+            </p>
+
+            <p>
+                Quiero que lo que tengamos sea bonito, sincero y tranquilo.
+                Quiero cuidarte, respetarte y demostrarte con hechos lo mucho que
+                significas para mí.
+            </p>
+
+            <p>
+                No quiero algo perfecto, quiero algo verdadero.
+                Algo que podamos construir poquito a poquito, con confianza,
+                cariño y ganas de estar el uno para el otro.
+            </p>
+
+            <p>
+                Quiero que cada momento que compartamos tenga un significado,
+                que podamos hablar con sinceridad, apoyarnos y disfrutar de esas
+                pequeñas cosas que hacen especial estar juntos.
+            </p>
+
+            <p>
+                Y si alguna vez llegas a dudar de lo que siento, quiero que recuerdes
+                que detrás de estas palabras hay una intención muy sencilla:
+                <strong>quiero cuidar lo que estamos construyendo contigo.</strong>
+            </p>
+        </div>
+
+        <div class="firma">
+            Con mucho cariño,<br>
+            para mi Osito 🐻❤️
+        </div>
+    </div>
+</section>
+
+<section class="final oculto" id="final">
+    <div class="corazon">❤️</div>
+    <p>
+        No necesito prometerte un cuento perfecto.
+        Solo quiero que sepas que mis intenciones contigo son bonitas
+        y que quiero hacer las cosas bien.
+    </p>
+    <p class="frase-final">
+        Te quiero en mi vida, y quiero hacer las cosas bien contigo. ❤️
+    </p>
+    <div style="font-size: 32px; margin-top: 25px;">🐻✨🤍</div>
+</section>
+
+<script>
+function mostrarCarta() {
+    document.getElementById("carta").classList.remove("oculto");
+    document.getElementById("final").classList.remove("oculto");
+    setTimeout(() => {
+        document.getElementById("carta").scrollIntoView({behavior:"smooth"});
+    }, 150);
+}
+</script>
+
+</body>
+</html>
